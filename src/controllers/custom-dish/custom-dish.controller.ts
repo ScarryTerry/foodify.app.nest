@@ -11,7 +11,7 @@ export class CustomDishController {
 
   @Post('add')
   @HttpCode(HttpStatus.CREATED)
-  addCustomDish(@Body() dishDto: CustomDishDto): Promise<CustDish> {
+  addCustomDish(@Body() dishDto: CustomDishDto): Promise<CustDish | HttpStatus> {
     return this.dishServise.addCustomDish(dishDto);
   }
 
