@@ -1,4 +1,4 @@
-import { HttpCode, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -11,7 +11,7 @@ export class CustomDishService {
     @InjectModel(CustDish.name) private custDishModel: Model<CustDishDocument>
   ) { }
 
-  async addCustomDish(dto: CustomDishDto): Promise<any> {
+  async addCustomDish(dto: CustomDishDto): Promise<CustDish | HttpStatus> {
     try {
       const existingRecipe = await this.custDishModel.findOne(dto);
 

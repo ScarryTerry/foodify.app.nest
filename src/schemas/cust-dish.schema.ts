@@ -10,9 +10,6 @@ export class CustDish {
 
   @Prop({ required: true })
   recipe: string;
-
-  @Prop()
-  createdDate: string;
 }
 
 export const CustDishSchema = SchemaFactory.createForClass(CustDish);

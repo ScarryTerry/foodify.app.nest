@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
-export type DishDocument = FavDish & Document;
+export type FavDishDocument = FavDish & Document;
 
 @Schema()
 export class FavDish {
@@ -16,9 +16,6 @@ export class FavDish {
 
   @Prop()
   src: string;
-
-  @Prop()
-  createdDate: string;
 }
 
 export const FavDishSchema = SchemaFactory.createForClass(FavDish);
