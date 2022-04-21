@@ -1,14 +1,14 @@
 import { createTheme } from '@mui/material/styles';
 
-const NavBarTheme = createTheme({
+const FoodifyTheme = createTheme({
   palette: {
     primary: {
       main: '#33691e',
     },
-    secondary:{
-      main: '#FFFF'
-    } 
+    secondary: {
+      main: '#5e35b1'
+    }
   },
 });
 
-export default NavBarTheme;
+export default FoodifyTheme;
