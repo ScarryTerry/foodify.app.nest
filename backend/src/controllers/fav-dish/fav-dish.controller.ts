@@ -3,7 +3,7 @@ import { FavDishDto } from 'src/dto/fav-dish.dto';
 import { FavDish } from 'src/schemas/fav-dish.schema';
 import { FavDishService } from 'src/services/fav-dish/fav-dish.service';
 
-@Controller('fav-dish')
+@Controller('favDish')
 export class FavDishController {
   constructor(
     private readonly dishServise: FavDishService
@@ -12,6 +12,11 @@ export class FavDishController {
   @Get()
   getAllRecipes(): Promise<FavDish[]> {
     return this.dishServise.getAllRecipes();
+  }
+
+  @Post(':id')
+  getOneRecipe(@Param('id') id: string): Promise<FavDish> {
+    return this.dishServise.getOneRecipe(id);
   }
 
   @Post()
