@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-function App() {
+import NavBar from './components/NavBar';
+import RandomDishPage from './components/RandomDishPage';
+import RegisterPage from './components/RegisterPage';
+import CustomDishPage from './components/CustomDishPage';
+import FavDishPage from './components/FavDishPage';
+import LoginPage from './components/LoginPage';
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/custDish' element={<CustomDishPage />} />
+          <Route path='/favDish' element={<FavDishPage />} />
+          <Route path='/randomDish' element={<RandomDishPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
