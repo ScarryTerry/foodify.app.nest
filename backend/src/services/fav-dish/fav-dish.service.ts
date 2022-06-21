@@ -8,28 +8,28 @@ import { FavDish, FavDishDocument } from 'src/schemas/fav-dish.schema';
 @Injectable()
 export class FavDishService {
   constructor(
-    @InjectModel(FavDish.name) private FavDishModel: Model<FavDishDocument>
-  ) { }
+    @InjectModel(FavDish.name) private favDishModel: Model<FavDishDocument>,
+  ) {}
 
   async saveFavDish(dto: FavDishDto): Promise<FavDish> {
-      const existingRecipe = await this.FavDishModel.findOne(dto);
+    const existingRecipe = await this.favDishModel.findOne(dto);
 
-      if (existingRecipe === null) {
-        const newRecipe = new this.FavDishModel(dto);
-        return newRecipe.save(); 
-      }
-      throw new HttpException("Recipe already exist", HttpStatus.CONFLICT);
+    if (existingRecipe === null) {
+      const newRecipe = new this.favDishModel(dto);
+      return newRecipe.save();
+    }
+    throw new HttpException('Recipe already exist', HttpStatus.CONFLICT);
   }
 
   async removeFavDish(id: string): Promise<FavDish> {
-   return this.FavDishModel.findByIdAndRemove(id);
+    return this.favDishModel.findByIdAndRemove(id);
   }
 
   async getAllRecipes(): Promise<FavDish[]> {
-    return this.FavDishModel.find().exec();
+    return this.favDishModel.find().exec();
   }
 
   async getOneRecipe(id: string): Promise<FavDish> {
-    return this.FavDishModel.findById(id);
+    return this.favDishModel.findById(id);
   }
 }

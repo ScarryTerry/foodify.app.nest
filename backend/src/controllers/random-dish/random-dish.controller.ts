@@ -2,19 +2,17 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { FavDishDto } from 'src/dto/fav-dish.dto';
 import { RandomDishService } from 'src/services/random-dish/random-dish.service';
 
-@Controller('randomDish')
+@Controller('/randomDish')
 export class RandomDishController {
-  constructor(
-    private RandomDishService: RandomDishService
-  ) { }
+  constructor(private randomDishService: RandomDishService) {}
 
-  @Get()
+  @Get('/')
   getRandomDish(): any {
-    return this.RandomDishService.getRandomDish();
+    return this.randomDishService.getRandomDish();
   }
 
-  @Post('save')
+  @Post('/save')
   saveRandomDish(@Body() dishDto: FavDishDto): any {
-    return this.RandomDishService.saveRandomDish(dishDto);
+    return this.randomDishService.saveRandomDish(dishDto);
   }
 }
