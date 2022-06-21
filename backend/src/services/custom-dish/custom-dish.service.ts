@@ -8,8 +8,8 @@ import { CustDish, CustDishDocument } from 'src/schemas/cust-dish.schema';
 @Injectable()
 export class CustomDishService {
   constructor(
-    @InjectModel(CustDish.name) private custDishModel: Model<CustDishDocument>
-  ) { }
+    @InjectModel(CustDish.name) private custDishModel: Model<CustDishDocument>,
+  ) {}
 
   async addCustomDish(dto: CustomDishDto): Promise<CustDish | HttpStatus> {
     try {
@@ -35,6 +35,8 @@ export class CustomDishService {
   }
 
   async updateDish(id: string, cunstDishDto: CustomDishDto): Promise<CustDish> {
-    return this.custDishModel.findByIdAndUpdate(id, cunstDishDto, { new: true });
+    return this.custDishModel.findByIdAndUpdate(id, cunstDishDto, {
+      new: true,
+    });
   }
 }

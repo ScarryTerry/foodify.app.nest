@@ -1,11 +1,12 @@
 import { HttpModule } from '@nestjs/axios';
-import { Module } from '@nestjs/common';
-import { ApiController } from 'src/controllers/api/api.controller';
-import { ApiService } from 'src/services/api/api.service';
+import { Module, forwardRef } from '@nestjs/common';
+import { RandomDishController } from 'src/controllers/random-dish/random-dish.controller';
+import { RandomDishService } from 'src/services/random-dish/random-dish.service';
+import { FavDishModule } from '../fav-dish/fav-dish.module';
 
 @Module({
-  imports: [HttpModule],
-  providers: [ApiService],
-  controllers: [ApiController]
+  controllers: [RandomDishController],
+  providers: [RandomDishService],
+  imports: [forwardRef(() => FavDishModule), HttpModule],
 })
-export class RandomDishModule { }
+export class RandomDishModule {}
